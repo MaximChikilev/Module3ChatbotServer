@@ -7,19 +7,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-/*
-    POST(json) -> /add -> AddServlet -> MessageList
-    GET -> /get?from=x -> GetListServlet <- MessageList
-        <- json[...]
- */
-
 public class AddServlet extends HttpServlet {
 
 	private MessageList msgList = MessageList.getInstance();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		byte[] buf = requestBodyToArray(req); // json
+		byte[] buf = Utils.requestBodyToArray(req); // json
         String bufStr = new String(buf, StandardCharsets.UTF_8);
 
 		Message msg = Message.fromJSON(bufStr);
@@ -30,7 +24,7 @@ public class AddServlet extends HttpServlet {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST); // 400
 	}
 
-	private byte[] requestBodyToArray(HttpServletRequest req) throws IOException {
+	/*private byte[] requestBodyToArray(HttpServletRequest req) throws IOException {
         InputStream is = req.getInputStream();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buf = new byte[10240];
@@ -42,5 +36,5 @@ public class AddServlet extends HttpServlet {
         } while (r != -1);
 
         return bos.toByteArray();
-    }
+    }*/
 }

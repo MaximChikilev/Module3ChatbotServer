@@ -33,6 +33,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 
 
+	<servlet>
+		<servlet-name>AddNewUser</servlet-name>
+		<servlet-class>academy.prog.AddNewUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddNewUser</servlet-name>
+		<url-pattern>/addNewUser</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ChangeStatus</servlet-name>
+		<servlet-class>academy.prog.ChangeAppearanceStatusServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeStatus</servlet-name>
+		<url-pattern>/changeStatus</url-pattern>
+	</servlet-mapping>
+
 
 	<servlet>
 		<servlet-name>Add</servlet-name>

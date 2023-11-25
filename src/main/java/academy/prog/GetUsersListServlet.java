@@ -14,7 +14,7 @@ public class GetUsersListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json");
-        String json = msgList.getUsersList();
+        String json = Utils.gson.toJson(msgList.getUsersList());
         if (json != null) {
             OutputStream os = resp.getOutputStream();
             byte[] buf = json.getBytes(StandardCharsets.UTF_8);
