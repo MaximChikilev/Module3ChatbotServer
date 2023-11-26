@@ -13,7 +13,6 @@ public class ChangeAppearanceStatusServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String userLogin = req.getParameter("login");
         String status = req.getParameter("status");
-        System.out.println(userLogin + " - " + status);
         if (!msgList.getUsersList().containsKey(userLogin)) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
