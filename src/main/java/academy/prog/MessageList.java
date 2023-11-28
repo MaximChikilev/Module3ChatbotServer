@@ -7,9 +7,10 @@ import com.google.gson.GsonBuilder;
 
 public class MessageList {
     private static final MessageList msgList = new MessageList();
+    private int massageId = 1;
 
     private final Gson gson;
-    private final List<Message> list = new LinkedList<>();
+    private final List<Message> list = new ArrayList<>();
     private final Map<String, User> usersList = new HashMap<>();
 
     public static MessageList getInstance() {
@@ -21,7 +22,10 @@ public class MessageList {
     }
 
     public synchronized void add(Message m) {
-        list.add(m);
+        m.setMessageId(massageId);
+        list.add(massageId-1,m);
+        massageId++;
+
     }
 
     public synchronized String toJSON(int n, String sender) {
@@ -29,18 +33,23 @@ public class MessageList {
         return gson.toJson(new JsonMessages(list, n, sender));
     }
 
-    public synchronized Map<String,User> getUsersList() {
+    public synchronized Map<String, User> getUsersList() {
         return usersList;
     }
 
     public synchronized String getMessageListSize() {
         return gson.toJson(list.size());
     }
-    public synchronized void addNewUser(User user){
-        usersList.put(user.getUserName(),user);
+
+    public synchronized void addNewUser(User user) {
+        usersList.put(user.getUserName(), user);
     }
-    public synchronized void changeUserStatus(String userLogin, Status status){
+
+    public synchronized void changeUserStatus(String userLogin, Status status) {
         usersList.get(userLogin).setStatus(status);
         usersList.get(userLogin).setLastAppearanceDate(new Date());
+    }
+    public String getJsonMassageById(int id){
+        return gson.toJson(list.get(id-1));
     }
 }

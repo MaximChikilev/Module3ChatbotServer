@@ -7,7 +7,6 @@ import jakarta.servlet.http.*;
 public class GetListServlet extends HttpServlet {
 	
 	private MessageList msgList = MessageList.getInstance();
-	int x,y =0;
 
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -6,10 +6,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class Message {
+    private int messageId;
     private Date date = new Date();
     private String from;
     private String to;
     private String text;
+    private Content content;
 
     public Message(String from, String text) {
         this.from = from;
@@ -29,7 +31,9 @@ public class Message {
     @Override
     public String toString() {
         return new StringBuilder().append("[").append(date)
+                .append("Message ID: ").append(messageId)
                 .append(", From: ").append(from).append(", To: ").append(to)
+                .append(", Content: ").append((content==null)?"":content.getFileName())
                 .append("] ").append(text)
                 .toString();
     }
@@ -64,5 +68,9 @@ public class Message {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public void setMessageId(int messageId) {
+        this.messageId = messageId;
     }
 }

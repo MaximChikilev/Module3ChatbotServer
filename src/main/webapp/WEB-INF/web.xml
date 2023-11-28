@@ -51,6 +51,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/changeStatus</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>GetMessageById</servlet-name>
+		<servlet-class>academy.prog.GetCertainMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetMessageById</servlet-name>
+		<url-pattern>/getMessageById</url-pattern>
+	</servlet-mapping>
+
 
 	<servlet>
 		<servlet-name>Add</servlet-name>
