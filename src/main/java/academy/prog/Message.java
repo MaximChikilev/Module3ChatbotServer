@@ -18,6 +18,14 @@ public class Message {
         this.text = text;
     }
 
+    public Message(int messageId, Date date, String from, String to, String text) {
+        this.messageId = messageId;
+        this.date = date;
+        this.from = from;
+        this.to = to;
+        this.text = text;
+    }
+
     public String toJSON() {
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         return gson.toJson(this);
@@ -72,5 +80,17 @@ public class Message {
 
     public void setMessageId(int messageId) {
         this.messageId = messageId;
+    }
+
+    public int getMessageId() {
+        return messageId;
+    }
+
+    public void setContent(Content content) {
+        this.content = content;
+    }
+
+    public Content getContent() {
+        return content;
     }
 }
